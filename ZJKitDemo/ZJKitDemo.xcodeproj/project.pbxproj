@@ -16,6 +16,7 @@
 		8407F6741C0D7744004BA213 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8407F6721C0D7744004BA213 /* LaunchScreen.storyboard */; };
 		8407F67F1C0D7744004BA213 /* ZJKitDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F67E1C0D7744004BA213 /* ZJKitDemoTests.m */; };
 		8407F68A1C0D7744004BA213 /* ZJKitDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F6891C0D7744004BA213 /* ZJKitDemoUITests.m */; };
+		8407F7A11C1038AA004BA213 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8407F7A01C1038AA004BA213 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		8407F6851C0D7744004BA213 /* ZJKitDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZJKitDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8407F6891C0D7744004BA213 /* ZJKitDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJKitDemoUITests.m; sourceTree = "<group>"; };
 		8407F68B1C0D7744004BA213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8407F7A01C1038AA004BA213 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8407F7A11C1038AA004BA213 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +86,7 @@
 		8407F6551C0D7744004BA213 = {
 			isa = PBXGroup;
 			children = (
+				8407F7A01C1038AA004BA213 /* QuartzCore.framework */,
 				8407F6601C0D7744004BA213 /* ZJKitDemo */,
 				8407F67D1C0D7744004BA213 /* ZJKitDemoTests */,
 				8407F6881C0D7744004BA213 /* ZJKitDemoUITests */,
@@ -502,6 +506,7 @@
 				8407F6901C0D7744004BA213 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8407F6911C0D7744004BA213 /* Build configuration list for PBXNativeTarget "ZJKitDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -510,6 +515,7 @@
 				8407F6931C0D7744004BA213 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8407F6941C0D7744004BA213 /* Build configuration list for PBXNativeTarget "ZJKitDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +524,7 @@
 				8407F6961C0D7744004BA213 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
