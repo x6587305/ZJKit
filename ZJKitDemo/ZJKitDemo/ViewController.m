@@ -38,7 +38,31 @@
 -(void)layerStudy{
 //    [self layerDraw];
 //    [self layerLayout];
-    [self layerTouch];
+//    [self layerTouch];
+    [self layerScal];
+}
+/*Scaling Filters
+//图片显示 最好像素跟需要显示出来的像素 一样大。这样既不会拉伸变形。也不需要gpu额外操作缩放。当然当尺寸不一样 layer 也需要缩放 通过Scaling Filters
+ kCAFilterLinear 
+ kCAFilterNearest 
+ kCAFilterTrilinear
+ 他有上面三种类型
+ 默认是 kCAFilterLinear 这个模式
+ 这个过滤出来的图片是通过取几个点来生成一个像素。这样会很平滑。大部分会很不错。但是缩放的时候 有可能变得模糊
+ kCAFilterTrilinear
+ 跟kCAFilterLinear 差别并不大。但是他在生成的时候合成三种尺寸。然后在通过这个 得出最后结果
+ 这两个类型在处理高质量的图片的时候效果很好
+ kCAFilterNearest 
+ 这种类型比较直接就是取旁边的一个像素的颜色。 速度快。不会模糊。但是会补均匀。视觉效果也会变形
+ 
+ 
+ 总的来说 当横平竖直。颜色简单的制作出来的图片 更适合kCAFilterNearest
+ 其他的图片比如照相机拍摄的照片默认的更加适合
+ 
+ 
+ shouldRasterize //处理透明度的时候 子layer 怎样透明的属性
+*/
+-(void)layerScal{
     
 }
 
@@ -48,6 +72,11 @@
  -hitTest:
  参数都是layer的坐标系的坐标。前者是当前layer 是否包含这个坐标 后者包含子layer。
  这里有疑问了 偏到旁边的子坐标怎么算 试试吧
+ 
+ 关于自动布局等情况下 layer需要手动处理逻辑
+ - (void)layoutSublayersOfLayer:(CALayer *)layer;
+ 通过上面方法来处理
+ 当 layer bound改变或者调用过 -setNeedsLayout方法之后上面方法会被自动调用
  */
 -(void)layerTouch{
     self.layerView = [[UIView alloc]initWithFrame:CGRectMake(50, 50, 250, 250)];
@@ -62,6 +91,17 @@
     self.blueLayer.backgroundColor = [UIColor redColor].CGColor;
     self.blueLayer.anchorPoint = CGPointMake(0, 0);
     [self.layerView.layer addSublayer:self.blueLayer];
+    
+    
+    self.layerView.layer.contents = (__bridge id _Nullable)([UIImage imageNamed:@"4"].CGImage);
+    
+    //masksToBounds 属性会将阴影也切掉
+//    self.layerView.layer.cornerRadius =10;
+//    self.layerView.layer.masksToBounds = YES;
+    self.layerView.layer.shadowOpacity = 0.5f;//有点浓度的概念
+    self.layerView.layer.shadowOffset = CGSizeMake(0.0f, 5.0f);//偏移量 就是阴影主要在那边
+    self.layerView.layer.shadowRadius = 5.0f;//数字越大越柔和
+    
     
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
