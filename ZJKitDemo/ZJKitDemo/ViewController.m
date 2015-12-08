@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import <CoreText/CoreText.h>
 @interface ViewController ()
 @property (nonatomic, strong)  UIView *layerView;
 @property (nonatomic, strong) CALayer *blueLayer;
@@ -32,9 +33,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];
-    [self layerStudy];
+//    [self layerStudy];
+    [self animationStudy];
     
 }
+#pragma make --- animation学习
+-(void)animationStudy{
+    
+}
+
+
+
+
+
+
+
+
+
+#pragma make ---layer学习
+/*
+*/
 -(void)layerStudy{
 //    [self layerDraw];
 //    [self layerLayout];
@@ -42,16 +60,113 @@
 //    [self layerScal];
 //    [self layerTransform];
 //    [self layerTransform3D];
-    [self layerShapeLayer];
+//    [self layerShapeLayer];
+//    [self layerTextLayer];
 }
 
+//CATransformLayer --3D transform 的layer -- 做色子应该要看他
+//CAGradientLayer -- 渐变
+//CAReplicatorLayer --复制  镜像等
+//CAScrollLayer  --  Scroll
+//CATiledLayer
+
+-(void)layerTextLayer{
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 50, 320, 200)];
+    view.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:view];
+
+    
+    //create a text layer
+    CATextLayer *textLayer = [CATextLayer layer];
+    textLayer.contentsScale = [UIScreen mainScreen].scale;
+    textLayer.frame = view.bounds;
+    [view.layer addSublayer:textLayer];
+    
+    //set text attributes
+    textLayer.foregroundColor = [UIColor blackColor].CGColor;
+    textLayer.alignmentMode = kCAAlignmentJustified;
+    textLayer.wrapped = YES;
+    //choose a font
+    UIFont *font = [UIFont systemFontOfSize:15];
+    //set layer font
+    CFStringRef fontName = (__bridge CFStringRef)font.fontName;
+    CGFontRef fontRef = CGFontCreateWithFontName(fontName);
+    textLayer.font = fontRef;
+    textLayer.fontSize = font.pointSize;
+    CGFontRelease(fontRef);
+    //choose some text
+    NSString *text = @"Lorem ipsum dolor sit amet, consectetur adipiscing \ elit. Quisque massa arcu, eleifend vel varius in, facilisis pulvinar \ leo. Nunc quis nunc at mauris pharetra condimentum ut ac neque. Nunc \elementum, libero ut porttitor dictum, diam odio congue lacus, vel \ fringilla sapien diam at purus. Etiam suscipit pretium nunc sit amet \ lobortis";
+    //set layer text
+    textLayer.string = text;
+    
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, 320, 200)];
+        label.font =[UIFont systemFontOfSize:15];
+        label.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:label];
+        label.numberOfLines = 0;
+        [label setText:text];
+    
+    
+    LayerLabel *label2 = [[LayerLabel alloc]initWithFrame:CGRectMake(0, 400, 320, 200)];
+    label2.font =[UIFont systemFontOfSize:15];
+    label2.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:label2];
+    label2.numberOfLines = 0;
+    [label2 setText:text];
+    
+    
+    
+    
+    
+//    //set text attributes
+//    textLayer.alignmentMode = kCAAlignmentJustified; textLayer.wrapped = YES;
+//    //choose a font
+//    UIFont *font = [UIFont systemFontOfSize:15];
+//    //choose some text
+//    NSString *text = @"Lorem ipsum dolor sit amet, consectetur adipiscing \ elit. Quisque massa arcu, eleifend vel varius in, facilisis pulvinar \ leo. Nunc quis nunc at mauris pharetra condimentum ut ac neque. Nunc \ elementum, libero ut porttitor dictum, diam odio congue lacus, vel \ fringilla sapien diam at purus. Etiam suscipit pretium nunc sit amet \ lobortis";
+//    //create attributed string
+//    NSMutableAttributedString *string = nil;
+//    string = [[NSMutableAttributedString alloc] initWithString:text];
+//    //convert UIFont to a CTFont
+//    CFStringRef fontName = (__bridge CFStringRef)font.fontName; CGFloat fontSize = font.pointSize;
+//    CTFontRef fontRef = CTFontCreateWithName(fontName, fontSize, NULL);
+//    //set text attributes
+//    NSDictionary *attribs = @{
+//                              (__bridge id)kCTForegroundColorAttributeName:
+//                                  (__bridge id)[UIColor blackColor].CGColor, (__bridge id)kCTFontAttributeName: (__bridge id)fontRef
+//                              };
+//    [string setAttributes:attribs range:NSMakeRange(0, [text length])]; attribs = @{
+//                                                                                    (__bridge id)kCTForegroundColorAttributeName: (__bridge id)[UIColor redColor].CGColor, (__bridge id)kCTUnderlineStyleAttributeName:
+//                                                                                        @(kCTUnderlineStyleSingle),
+//                                                                                    (__bridge id)kCTFontAttributeName: (__bridge id)fontRef
+//                                                                                    };
+//    [string setAttributes:attribs range:NSMakeRange(6, 5)];
+//    //release the CTFont we created earlier
+//    CFRelease(fontRef);
+//    //set layer text
+//    textLayer.string = string;
+    
+//    //可以看出 使用textLayer 跟 uilabel 绘制的文字差别很大。他们使用不同的实现方式
+//    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 200, 320, 200)];
+//    label.backgroundColor = [UIColor whiteColor];
+//    [self.view addSubview:label];
+//    label.numberOfLines = 0;
+//    [label setAttributedText:string];
+}
 /*
  CAShapeLayer 是一个可以画各种图形的cayer 相比纯粹的画图。 使用向量图 代替 位图 有很多优势。
  1 比绘图性能好非常多
  2 因为不用位图。也不需要一个大画布（我是这么理解的。实际上就是当你重写draw方法的时候。会准备一个 backing image 大小等于这个view的 大小* Scale）
- 
+ 3. 他不受view 的bounds 的大小限制 可以画到外面去
+ 4.同样 因为使用向量图 所以 放大缩小旋转等 不会模糊
  */
 -(void)layerShapeLayer{
+    
+    
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(100, 0, 100, 100)];
+    view.backgroundColor = [UIColor redColor];
+    [self.view addSubview:view];
+    
     UIBezierPath *path = [[UIBezierPath alloc] init];
     [path moveToPoint:CGPointMake(175, 100)];
     [path addArcWithCenter:CGPointMake(150, 100) radius:25
@@ -63,7 +178,7 @@
     CAShapeLayer *shapeLayer = [CAShapeLayer layer]; shapeLayer.strokeColor = [UIColor redColor].CGColor; shapeLayer.fillColor = [UIColor clearColor].CGColor; shapeLayer.lineWidth = 5;
     shapeLayer.lineJoin = kCALineJoinRound; shapeLayer.lineCap = kCALineCapRound; shapeLayer.path = path.CGPath;
     //add it to our view
-    [self.view.layer addSublayer:shapeLayer];
+    [view.layer addSublayer:shapeLayer];
 }
 
 /*对于CGAffineTransform 学习绘图的时候已经有过一点了解。简单的说就是将一个点映射到另外一个点 是通过一个矩阵
@@ -308,4 +423,57 @@
     // Dispose of any resources that can be recreated.
 }
 
+@end
+
+#warning 并没有弄明白 一直大黑屏 先过 之后来看
+@implementation LayerLabel
++ (Class)layerClass {
+    //this makes our label create a CATextLayer //instead of a regular CALayer for its backing layer
+    return [CATextLayer class];
+}
+-(void)setBackgroundColor:(UIColor *)backgroundColor{
+    self.textLayer.backgroundColor = [backgroundColor CGColor];
+}
+- (CATextLayer *)textLayer {
+    CATextLayer *layer = (CATextLayer *)self.layer;
+    return layer;
+}
+- (void)setUp {
+    //set defaults from UILabel settings
+    self.text = self.text;
+    self.textColor = self.textColor;
+    self.font = self.font;
+    //we should really derive these from the UILabel settings too //but that's complicated, so for now we'll just hard-code them
+    [self textLayer].alignmentMode = kCAAlignmentJustified;
+    [self textLayer].wrapped = YES;
+    [self.layer display];
+}
+- (id)initWithFrame:(CGRect)frame {
+    //called when creating label programmatically
+    if (self = [super initWithFrame:frame]) {
+        [self setUp];
+    }
+    return self;
+}
+- (void)awakeFromNib {
+    //called when creating label using Interface Builder
+    [self setUp];
+}
+- (void)setText:(NSString *)text {
+    super.text = text;
+    //set layer text
+    [self textLayer].string = text;
+}
+- (void)setTextColor:(UIColor *)textColor {
+    super.textColor = textColor;
+    //set layer text color
+    [self textLayer].foregroundColor = textColor.CGColor;
+}
+- (void)setFont:(UIFont *)font {
+    super.font = font;
+    //set layer font
+    CFStringRef fontName = (__bridge CFStringRef)font.fontName; CGFontRef fontRef = CGFontCreateWithFontName(fontName); [self textLayer].font = fontRef;
+    [self textLayer].fontSize = font.pointSize;
+    CGFontRelease(fontRef);
+}
 @end

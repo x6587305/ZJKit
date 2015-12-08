@@ -13,3 +13,7 @@
 
 @end
 
+@interface LayerLabel : UILabel
+
+
+@end
