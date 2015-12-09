@@ -13,6 +13,7 @@
 @property (nonatomic, strong)  UIView *layerView;
 @property (nonatomic, strong) CALayer *blueLayer;
 @property (nonatomic, strong) CALayer *redLayer;
+@property (nonatomic, strong) CALayer *colorLayer;
 @end
 
 @implementation ViewController
@@ -33,17 +34,260 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];
+    
+    self.layerView = [[UIView alloc]initWithFrame:CGRectMake(50, 50, 250, 250)];
+    self.layerView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.layerView];
+    
+    UIButton *button =[UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(100, 400, 100, 100);
+    [button setTitle:@"change color" forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(changeColor:) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(changeColor2:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+
 //    [self layerStudy];
-    [self animationStudy];
-    
+//    [self animationStudy];
+     [self animationStudy2];
 }
+
 #pragma make --- animation学习
--(void)animationStudy{
+-(void)animationStudy2{//--------explicit animations
+    
+    
+    //property animation --1.basic  2.keyframe
+    
+    self.colorLayer = [CALayer layer];
+    self.colorLayer.frame = CGRectMake(50.0f, 50.0f, 100.0f, 100.0f); self.colorLayer.backgroundColor = [UIColor blueColor].CGColor;
+    //add it to our view
+    [self.layerView.layer addSublayer:self.colorLayer];
     
 }
+-(void)changeColor2:(id)btn{
+    CGFloat red = arc4random() / (CGFloat)INT_MAX;
+    CGFloat green = arc4random() / (CGFloat)INT_MAX;
+    CGFloat blue = arc4random() / (CGFloat)INT_MAX;
+    UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    //create a basic animation
+    //可以添加这样添加动画
+    /*
+     CABasicAnimation 主要有这个三个值。看名字也能明白作用。需要注意的是  动画的类型是 通过keyPath 来设置的. 在某种程度上 跟 implicit animations. 里面默认的actions 字典有点像的
+     id fromValue  开始的值
+     id toValue   结束的值
+     id byValue  变化的值
+     这三个值并不需要都提供 甚至不应该都提供。因为会冲突。获取原则CABasicAnimation文档里面有描述
+     需要注意的 是 这个animation并不改变 model 只改变 presentation 所以自行完成之后有回复到之前的样子了
+     */
+//    CABasicAnimation *animation = [CABasicAnimation animation];
+//    animation.keyPath = @"backgroundColor";
+//    animation.toValue = (__bridge id)color.CGColor;
+//    
+////     animation.fromValue = (__bridge id)[UIColor blackColor].CGColor;
+////     animation.byValue = (__bridge id)color.CGColor;
+//    //apply animation to layer
+//    [self.colorLayer addAnimation:animation forKey:nil];
+   
+    
+//    //下面的方法可以正确的运行我们需要的效果
+//    CABasicAnimation *animation = [CABasicAnimation animation]; animation.keyPath = @"backgroundColor";
+//    animation.toValue = (__bridge id)color.CGColor;
+//    //apply animation without snap-back
+//    [self applyBasicAnimation:animation toLayer:self.colorLayer];
+    
+    /*
+     CABasicAnimation 存在一个特殊的delegate CAAnimationDelegate 来处理动画完成后的回调
+     
+     --CAAnimationDelegate 并不真实的存在于某个头文件里面 在CAAnimation 里面可以看到他(一个nsobject 的分类)的方法
 
+    - (void)animationDidStart:(CAAnimation *)anim;
+    - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag;
+     通过监听动作完成之后在修改该model layer的值。并且不加动画来实现同样的效果。
+     貌似会闪一下。。我们的产品 肯定又要叫了 不让闪！！！！
+     */
+    CABasicAnimation *animation = [CABasicAnimation animation];
+    animation.keyPath = @"backgroundColor";
+    animation.toValue = (__bridge id)color.CGColor;
+    animation.delegate = self;
+    [self.colorLayer addAnimation:animation forKey:nil];
+}
+- (void)applyBasicAnimation:(CABasicAnimation *)animation toLayer:(CALayer *)layer{
+    //set the from value (using presentation layer if available)
+    animation.fromValue = [layer.presentationLayer ?: layer valueForKeyPath:animation.keyPath];
+    //update the property in advance
+    //note: this approach will only work if toValue != nil
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    [layer setValue:animation.toValue forKeyPath:animation.keyPath];
+    [CATransaction commit];
+    //apply animation to layer
+    [layer addAnimation:animation forKey:nil];
+}
+- (void)animationDidStop:(CABasicAnimation *)anim finished:(BOOL)flag {
+    //set the backgroundColor property to match animation toValue
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    self.colorLayer.backgroundColor = (__bridge CGColorRef)anim.toValue;
+    [CATransaction commit];
+}
 
+-(void)animationStudy{//--------implicit animations.
+   
+    
+    
+    
+    
+    self.blueLayer = [CALayer layer];
+    self.blueLayer.frame = CGRectMake(50.0f, 50.0f, 100.0f, 100.0f);
+    self.blueLayer.backgroundColor = [UIColor blueColor].CGColor;
+    
+    self.blueLayer.frame = CGRectMake(50, 50, 250, 250);
+    [self.layerView.layer addSublayer:self.blueLayer];
+    
+    self.layerView.layer.backgroundColor = [UIColor blueColor].CGColor;
+    
+    //add a custom action
+    self.redLayer = [CALayer layer];
+    self.redLayer.frame = CGRectMake(0.0f, 0.0f, 50.0f, 50.0f);
+    CATransition *transition = [CATransition animation];
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromLeft;
+    //可以改变actions 来实现修改 动画
+    self.redLayer.actions = @{@"backgroundColor": transition};
+    [self.layerView.layer addSublayer:self.redLayer];
+}
 
+/*并没有加动画却可以看到 切换颜色的时候有明显的动画效果 - implicit animation
+ 这样的动画 被CATransaction 类管理。这个类并不可以 alloc 和 init。而是通过方法
+ +begin +commit  来push 或者 pop 到栈上面去
+ +setAnimationDuration: 设置动画时间 默认 0.25s
+ //Core Animation  在每次runloop 的时候自动执行一个 动画操作（transaction）
+ 即使你不手动调用[CATransaction begin] 系统也会自动将一个 runloop 里面的改变并成一个动画.
+ 然后执行一个0.25s的改变动画
+ */
+-(void)changeColor:(UIButton *)obj{
+    CGFloat red = arc4random() / (CGFloat)INT_MAX;
+    CGFloat green = arc4random() / (CGFloat)INT_MAX;
+    CGFloat blue = arc4random() / (CGFloat)INT_MAX;
+//    self.blueLayer.frame = CGRectMake(arc4random() %160, arc4random() %160, arc4random() %160, arc4random() %160);
+//    self.blueLayer.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0].CGColor;
+    
+//    //自己修改该动画时间 既然
+//    //为了防止 设置影响到正在进行的其他动画（比如旋转动画）。最好自己push一个新的动作。
+//    //实际上 如果不push新的。大部分情况下也能正常工作的
+//    [CATransaction begin];
+//    CGFloat red = arc4random() / (CGFloat)INT_MAX;
+//    CGFloat green = arc4random() / (CGFloat)INT_MAX;
+//    CGFloat blue = arc4random() / (CGFloat)INT_MAX;
+//    self.blueLayer.frame = CGRectMake(arc4random() %160, arc4random() %160, arc4random() %160, arc4random() %160);
+//    //这个时间只对 之后添加的动画有效果
+//     [CATransaction setAnimationDuration:1.0];
+//    
+//    [CATransaction setCompletionBlock:^{
+//        //这里边的动画 将恢复到0.25s 因为setAnimationDuration 只对当前的动画有效果。这里面的是下一个动画了
+//        //rotate the layer 90 degrees
+//        CGAffineTransform transform = self.blueLayer.affineTransform;
+//        transform = CGAffineTransformRotate(transform, M_PI_2);
+//        self.blueLayer.affineTransform = transform;
+//    }];
+//    self.blueLayer.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0].CGColor;
+//   
+//    //view 并没有动画
+//    self.layerView.frame = CGRectMake(arc4random() %160, arc4random() %160, arc4random() %160, arc4random() %160);
+//    //commit the transaction
+//    [CATransaction commit];
+//    
+//    //uiview 需要用这两个方法
+//    [UIView beginAnimations:nil context:nil];
+//    self.layerView.frame = CGRectMake(arc4random() %160, arc4random() %160, arc4random() %160, arc4random() %160);
+//    [UIView commitAnimations];
+    
+  
+//    //对于uiview 本身的 backing layer implicit animation 缺并没有效果
+//    //begin a new transaction
+//    [CATransaction begin];
+//    //set the animation duration to 1 second
+//    [CATransaction setAnimationDuration:1.0];
+//    //randomize the layer background color
+//    CGFloat red = arc4random() / (CGFloat)INT_MAX;
+//    CGFloat green = arc4random() / (CGFloat)INT_MAX;
+//    CGFloat blue = arc4random() / (CGFloat)INT_MAX;
+//    self.layerView.layer.backgroundColor =[UIColor colorWithRed:red green:green blue:blue alpha:1.0].CGColor;
+//                                                                                            //commit the transaction
+//    [CATransaction commit];
+    
+    
+    /*
+     当layer的属性改变的时候 这个动画的过程是这样的
+     1 查看这个layer 是否有代理 。代理是否实现了-actionForLayer:forKey 方法.如果有 发送消息 返回值。
+     2 如果没有代理或者代理没有实现-actionForLayer:forKey 那么检查 actions 字典。是否包含这个property name 的actions
+     3 如果action dictionary 里面也没有 那么往下 在 style dictionary hierarchy 里面查找这个属性名称的acton
+     4 最后如果在查找过程中的任何一步找到action就会返回 否则一直没找到 就会调用 -defaultActionForKey:
+     
+     --------------------------------------------------------------
+     上面的查找 返回的对象或者是nil（那么就会立即改变没有动画）是需要遵守CAAction 协议的。而CALayer 就会产生 从旧值 到新值的改变动画
+     而为什么uivew 的backing layer 没有默认动画。是因为uiview的backing layer 的代理就是uiview。而uiview 重写了-actionForLayer:forKey  返回nil
+     */
+    
+    //test layer action when outside of animation block
+//    NSLog(@"Outside: %@", [self.layerView actionForLayer:self.layerView.layer forKey:@"backgroundColor"]);
+//    //begin animation block
+//    [UIView beginAnimations:nil context:nil];
+//    [UIView setAnimationDuration:1];
+//    //test layer action when inside of animation block
+//    NSLog(@"Inside: %@", [self.layerView actionForLayer:self.layerView.layer forKey:@"backgroundColor"]);
+//        CGFloat red = arc4random() / (CGFloat)INT_MAX;
+//        CGFloat green = arc4random() / (CGFloat)INT_MAX;
+//        CGFloat blue = arc4random() / (CGFloat)INT_MAX;
+//     self.layerView.layer.backgroundColor =[UIColor colorWithRed:red green:green blue:blue alpha:1.0].CGColor;
+//    //end animation block
+//    [UIView commitAnimations];
+//    //上面的代码可以看到 当 调用[UIView beginAnimations:nil context:nil]; 之后-actionForLayer:forKey  返回了一个 CABasicAnimation 对象
+    
+    
+    
+    
+//        [CATransaction begin];
+
+//        self.blueLayer.frame = CGRectMake(arc4random() %160, arc4random() %160, arc4random() %160, arc4random() %160);
+//    
+//    //还可以通过这个方法关闭之后的动画
+//        [CATransaction setDisableActions:YES];
+//        self.blueLayer.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0].CGColor;
+//    
+//        //view 并没有动画
+//        self.layerView.frame = CGRectMake(arc4random() %160, arc4random() %160, arc4random() %160, arc4random() %160);
+//        //commit the transaction
+//        [CATransaction commit];
+    
+    
+    
+//    self.redLayer.backgroundColor =[UIColor colorWithRed:red green:green blue:blue alpha:1.0].CGColor;
+    
+    
+    
+    
+    
+    
+    
+    
+    //layer 很多人会理解为mvc上面的 view - v 实际上更应该还是 model。他记录的是界面要显示成的样子的数据。
+    /*
+     这里有presentation layer 的概念。这个是当前显示的layer。比如有动画的时候。动画执行过程中 显示的 是 presentation layer 可以通过 -presentationLayer 方法获取的到。
+     presentation layer 实际上本质就是普通的layer类型。（ios 一秒刷新60次屏幕。难道意味着一个 layer的动画 设置时间一s 完成 就会产生60 个 presentation layer ？？？？？）
+     
+     一般情况下不需要访问  presentation layer 当然凡事必有例外：
+     
+     1.类似进度条这样的。有动画 还需要更新数字的。如果只是做的假的。或者会前进一大块。做了动画变得圆滑。但是并不希望数字只是动一下。这时候 就可以获取 presentation layer 来设置真真显示的百分比
+     2.事件。如果使用-hitTest: 的对象在变化中。而hieTest 判断的却是 modelLayer 。显然是不合理的。
+     
+     */
+    [CATransaction begin];
+    [CATransaction setAnimationDuration:10.0];
+    self.blueLayer.frame = CGRectMake(arc4random() %160, arc4random() %160, arc4random() %160, arc4random() %160);
+    self.blueLayer.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0].CGColor;
+
+    [CATransaction commit];
+}
 
 
 
@@ -343,29 +587,33 @@
     //当blueLayer的视觉 超过了父 containsPoint并不会判定在范围以内   hitTest 会
     point = [self.layerView.layer convertPoint:point fromLayer:self.view.layer];
     //如果装换成子layer的坐标系里面就可以了
-//    point = [self.blueLayer convertPoint:point fromLayer:self.view.layer];
-    
-    if([self.blueLayer containsPoint:point]){
-        NSLog(@"in blueLayer");
-    }
+    //    point = [self.blueLayer convertPoint:point fromLayer:self.view.layer];
+    //    NSLog(@"%@",NSStringFromCGPoint(point));
+    //上面理解错了 containsPoint 应该是自己的坐标系中  而 hitTest 是父坐标系
+    //    if([self.blueLayer containsPoint:point]){
+    //        NSLog(@"in containsPoint blueLayer");
+    //    }
     if([self.blueLayer hitTest:point]){
-        NSLog(@"in hit blueLayer");
+        NSLog(@"-------------in hitTest blueLayer");
     }
-    //get layer using containsPoint:
-    if ([self.layerView.layer containsPoint:point]) {
-        //convert point to blueLayer’s coordinates
-        point = [self.blueLayer convertPoint:point fromLayer:self.layerView.layer];
-        if ([self.blueLayer containsPoint:point]) {
-            [[[UIAlertView alloc] initWithTitle:@"Inside Blue Layer" message:nil
-                                       delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil] show];
-        }
-        else
-        {
-            [[[UIAlertView alloc] initWithTitle:@"Inside White Layer"
-                                        message:nil delegate:nil
-                              cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-        }
+    if([self.blueLayer.presentationLayer hitTest:point]){
+        NSLog(@"++++++++++++presentationLayer hitTest blueLayer");
     }
+//    //get layer using containsPoint:
+//    if ([self.layerView.layer containsPoint:point]) {
+//        //convert point to blueLayer’s coordinates
+//        point = [self.blueLayer convertPoint:point fromLayer:self.layerView.layer];
+//        if ([self.blueLayer containsPoint:point]) {
+//            [[[UIAlertView alloc] initWithTitle:@"Inside Blue Layer" message:nil
+//                                       delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil] show];
+//        }
+//        else
+//        {
+//            [[[UIAlertView alloc] initWithTitle:@"Inside White Layer"
+//                                        message:nil delegate:nil
+//                              cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+//        }
+//    }
 }
 
 /**
