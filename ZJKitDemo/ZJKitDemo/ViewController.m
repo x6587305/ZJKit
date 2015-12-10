@@ -14,6 +14,10 @@
 @property (nonatomic, strong) CALayer *blueLayer;
 @property (nonatomic, strong) CALayer *redLayer;
 @property (nonatomic, strong) CALayer *colorLayer;
+
+@property (nonatomic, strong)  UIImageView *imageView;
+@property (nonatomic, strong) CALayer *imageLayer;
+@property (nonatomic, copy) NSArray *images;
 @end
 
 @implementation ViewController
@@ -46,6 +50,17 @@
     [button addTarget:self action:@selector(changeColor2:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
 
+    
+    
+    self.imageView = [[UIImageView alloc]initWithFrame:CGRectMake(50, 200, 200, 200)];
+    self.imageLayer = [CALayer layer];
+    self.imageLayer.frame = CGRectMake(50, 50, 200, 200);
+    [self.imageView.layer addSublayer:self.imageLayer];
+    [self.view addSubview:self.imageView];
+    
+    self.images = @[[UIImage imageNamed:@"1"], [UIImage imageNamed:@"2"],
+                    [UIImage imageNamed:@"3"], [UIImage imageNamed:@"4"]];
+    
 //    [self layerStudy];
 //    [self animationStudy];
      [self animationStudy2];
@@ -68,7 +83,7 @@
     CGFloat green = arc4random() / (CGFloat)INT_MAX;
     CGFloat blue = arc4random() / (CGFloat)INT_MAX;
     UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
-    //create a basic animation
+#pragma make- create a basic animation
     //可以添加这样添加动画
     /*
      CABasicAnimation 主要有这个三个值。看名字也能明白作用。需要注意的是  动画的类型是 通过keyPath 来设置的. 在某种程度上 跟 implicit animations. 里面默认的actions 字典有点像的
@@ -103,12 +118,203 @@
     - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag;
      通过监听动作完成之后在修改该model layer的值。并且不加动画来实现同样的效果。
      貌似会闪一下。。我们的产品 肯定又要叫了 不让闪！！！！
+     原因其实很简单 完成的回调方法只保证是完成之后调用。但是并不是毫无间隙的调用。在调用完成回调之前。颜色当然会恢复到原来的颜色s
      */
-    CABasicAnimation *animation = [CABasicAnimation animation];
-    animation.keyPath = @"backgroundColor";
-    animation.toValue = (__bridge id)color.CGColor;
-    animation.delegate = self;
-    [self.colorLayer addAnimation:animation forKey:nil];
+//    CABasicAnimation *animation = [CABasicAnimation animation];
+//    animation.keyPath = @"backgroundColor";
+//    animation.toValue = (__bridge id)color.CGColor;
+//    animation.delegate = self;
+//    [self.colorLayer addAnimation:animation forKey:nil];
+    
+    
+#pragma make-------------------------------------------------CAKeyframeAnimation
+    //通过CAKeyframeAnimation 创建整个变化过程
+//    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation]; animation.keyPath = @"backgroundColor";
+//    animation.duration = 2.0;
+//    animation.values = @[
+//                         (__bridge id)[UIColor blueColor].CGColor, (__bridge id)[UIColor redColor].CGColor, (__bridge id)[UIColor greenColor].CGColor, (__bridge id)[UIColor blueColor].CGColor ];
+//    //apply animation to layer
+//    [self.colorLayer addAnimation:animation forKey:nil];
+    
+    //
+    //可以设置动画的path
+//    UIBezierPath *bezierPath = [[UIBezierPath alloc] init]; [bezierPath moveToPoint:CGPointMake(0, 150)]; [bezierPath addCurveToPoint:CGPointMake(300, 150) controlPoint1:CGPointMake(75, 0) controlPoint2:CGPointMake(225, 300)];
+//    //draw the path using a CAShapeLayer
+//    CAShapeLayer *pathLayer = [CAShapeLayer layer];
+//    pathLayer.path = bezierPath.CGPath;
+//    pathLayer.fillColor = [UIColor clearColor].CGColor;
+//    pathLayer.strokeColor = [UIColor redColor].CGColor;
+//    pathLayer.lineWidth = 3.0f;
+//    [self.view.layer addSublayer:pathLayer];
+//    //add the ship
+//    CALayer *shipLayer = [CALayer layer];
+//    shipLayer.frame = CGRectMake(0, 0, 64, 64);
+//    shipLayer.position = CGPointMake(0, 150); shipLayer.contents = (__bridge id)[UIImage imageNamed:@"3"].CGImage;
+//    [self.view.layer addSublayer:shipLayer];
+//    //create the keyframe animation
+//    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation]; animation.keyPath = @"position";
+//    animation.duration = 4.0;
+//    animation.path = bezierPath.CGPath;
+//    animation.rotationMode = kCAAnimationRotateAuto;
+//    [shipLayer addAnimation:animation forKey:nil];
+    
+#pragma make ------------Virtual Properties
+//    //Virtual Properties旋转一圈这样的需求 如果直接设置M_PI *2 毫无疑问没有效果 因为 M_PI*2 跟 0 是一样你的。
+//    //这里就也需需要使用复杂的CAKeyframeAnimation 幸运的是 我们也可以使用 Virtual Properties。因为animation.keyPath 是基于key的。而有"transform.rotation"这个key 是负责旋转
+//    //这里的keypath 并不是传统上面KVC的 key 因为transform并不是一个 oc对象。而是一个结构体
+//    //add the ship
+//    CALayer *shipLayer = [CALayer layer];
+//    shipLayer.frame = CGRectMake(0, 0, 128, 128);
+//    shipLayer.position = CGPointMake(150, 150);
+//    shipLayer.contents = (__bridge id)[UIImage imageNamed:@"3"].CGImage;
+//    [self.view.layer addSublayer:shipLayer];
+//   
+////    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+////    animation.duration = 2.0;
+////     animation.keyPath = @"transform";
+////    animation.values = @[ [NSValue valueWithCATransform3D:CATransform3DMakeRotation(0, 0, 0, 1)], [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI/2, 0, 0, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0, 0, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI*1.5, 0, 0, 1)],[NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI*2, 0, 0, 1)]];
+//
+//
+//    //animate the ship rotation
+//    CABasicAnimation *animation = [CABasicAnimation animation];
+//  
+//    animation.duration = 2.0;
+////      animation.keyPath = @"transform";
+////    animation.byValue = @(M_PI );
+////    animation.byValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0, 0, 1)];
+//    
+//    //如果是@"transform.rotation" 值就是@(M_PI * 2) 如果是 @"transform“ 就应该是[NSValue valueWithCATransform3D:CATransform3DMakeRotation(M_PI, 0, 0, 1)]
+//    animation.keyPath = @"transform.rotation";
+//    animation.byValue = @(M_PI * 2);
+//    [shipLayer addAnimation:animation forKey:nil];
+    
+    #pragma make- ---Animation Groups
+    /*无论是 base animation 还是 keyframe animation 都是针对一个属性 对于多个属性的变化 需要
+     CAAnimationGroup
+     */
+
+//    UIBezierPath *bezierPath = [[UIBezierPath alloc] init];
+//    [bezierPath moveToPoint:CGPointMake(0, 150)];
+//    [bezierPath addCurveToPoint:CGPointMake(300, 150) controlPoint1:CGPointMake(75, 0) controlPoint2:CGPointMake(225, 300)];
+//    //draw the path using a CAShapeLayer
+//    CAShapeLayer *pathLayer = [CAShapeLayer layer];
+//    pathLayer.path = bezierPath.CGPath;
+//    pathLayer.fillColor = [UIColor clearColor].CGColor;
+//    pathLayer.strokeColor = [UIColor redColor].CGColor;
+//    pathLayer.lineWidth = 3.0f;
+//    [self.view.layer addSublayer:pathLayer];
+//    //add a colored layer
+//    CALayer *colorLayer = [CALayer layer];
+//    colorLayer.frame = CGRectMake(0, 0, 64, 64);
+//    colorLayer.position = CGPointMake(0, 150);
+//    colorLayer.backgroundColor = [UIColor greenColor].CGColor;
+//    [self.view.layer addSublayer:colorLayer];
+//    //create the position animation
+//    CAKeyframeAnimation *animation1 = [CAKeyframeAnimation animation];
+//    animation1.keyPath = @"position";
+//    animation1.path = bezierPath.CGPath;
+//    animation1.rotationMode = kCAAnimationRotateAuto;
+//    //create the color animation
+//    CABasicAnimation *animation2 = [CABasicAnimation animation];
+//    animation2.keyPath = @"backgroundColor";
+//    animation2.toValue = (__bridge id)[UIColor redColor].CGColor;
+//    //create group animation CAAnimationGroup 也是 CAAnimation 的子类
+//    CAAnimationGroup *groupAnimation = [CAAnimationGroup animation];
+//    groupAnimation.animations = @[animation1, animation2];
+//    groupAnimation.duration = 4.0;
+//    //add the animation to the color layer
+//    [colorLayer addAnimation:groupAnimation forKey:nil];
+    
+#pragma make ---------Transitions
+    /**
+     类似property animate都是针对某些属性进行变化 有时候需要的动画没法用 property animate表示。比如需要切换图片什么的。
+     这时候就需要转场动画的概念 .transitions 不像 property animate那样是在两个值之间变化。而是定义一系列行为 让老的layer消失 新的layer出现
+     CATransition 类处理transitions
+     catranstion 有个type 属性 定义如下
+     kCATransitionFade
+     kCATransitionMoveIn //新的移动进来 旧的消失
+     kCATransitionPush //两个一起动
+     kCATransitionReveal//旧的移走 新的出现
+     还有个 subtype 定义方向
+     kCATransitionFromRight 
+     kCATransitionFromLeft
+     kCATransitionFromTop 
+     kCATransitionFromBottom
+     */
+    
+//    //set up crossfade transition
+////    CATransition *transition = [CATransition animation];
+////    transition.type = kCATransitionMoveIn;
+////    transition.subtype = kCATransitionFromRight;
+////    //apply transition to imageview backing layer
+////    [self.imageView.layer addAnimation:transition forKey:nil];
+//    //cycle to next image
+////    UIImage *currentImage = self.imageView.image;
+////    NSUInteger index = [self.images indexOfObject:currentImage];
+//    static NSUInteger index = 0;
+//    index = (index + 1) % [self.images count];
+////    self.imageView.image = self.images[index];
+//    UIImage *image = self.images[index];
+//    //Implicit Transitions  (__bridge id _Nullable)(image.CGImage);
+//    self.imageView.layer.contents = (__bridge id _Nullable)(image.CGImage);
+//    
+//
+//     可以看出 对于自己创建的layer 是存在Implicit Transitions的。同样对于backing layer 被disable了
+//
+//    self.imageLayer.contents = (__bridge id _Nullable)(image.CGImage);
+    
+    /**
+     Custom Transitions
+     CATransition 的动画就那么几种 有很大的限制。而 
+     UIView +transitionFromView:toView:duration:options:completion: 
+     和+transitionWithView:duration:options:animations: 
+     又有很大的不同 
+     UIViewAnimationOptionTransitionFlipFromLeft //翻转
+     UIViewAnimationOptionTransitionFlipFromRight
+     UIViewAnimationOptionTransitionCurlUp //向上翻页
+     UIViewAnimationOptionTransitionCurlDown 
+     UIViewAnimationOptionTransitionCrossDissolve //渐变
+     UIViewAnimationOptionTransitionFlipFromTop 
+     UIViewAnimationOptionTransitionFlipFromBottom
+     
+     */
+    //
+
+//    [UIView transitionWithView:self.imageView duration:1.0
+//                       options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+//                           //cycle to next image
+//            UIImage *currentImage = self.imageView.image;
+//            NSUInteger index = [self.images indexOfObject:currentImage];
+//            index = (index + 1) % [self.images count];
+//            self.imageView.image = self.images[index];
+//    } completion:NULL];
+   
+    //preserve the current view snapshot
+    //layer 的renderInContext 可以将试图转化成图片。利用这一点完全可以实现很多效果。可以先转化成图片。然后显示在一个view上在对哪个view进行动画处理 然后消失掉。
+    //另外这个对一些地方的性能也能有帮助。 可以将复杂显示 但是 缺没有用户交互的地方转化成图片显示
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0.0);
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *coverImage = UIGraphicsGetImageFromCurrentImageContext();
+    //insert snapshot view in front of this one
+    UIView *coverView = [[UIImageView alloc] initWithImage:coverImage];
+    coverView.frame = self.view.bounds;
+    [self.view addSubview:coverView];
+    //update the view (we'll simply randomize the layer background color)
+    self.view.backgroundColor = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
+    
+    
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        //scale, rotate and fade the view
+        CGAffineTransform transform = CGAffineTransformMakeScale(0.01, 0.01);
+        transform = CGAffineTransformRotate(transform, M_PI_2);
+        coverView.transform = transform;
+        coverView.alpha = 0.0;
+    } completion:^(BOOL finished){
+        //remove the cover view now we're finished with it
+        [coverView removeFromSuperview];
+    }];
+
 }
 - (void)applyBasicAnimation:(CABasicAnimation *)animation toLayer:(CALayer *)layer{
     //set the from value (using presentation layer if available)

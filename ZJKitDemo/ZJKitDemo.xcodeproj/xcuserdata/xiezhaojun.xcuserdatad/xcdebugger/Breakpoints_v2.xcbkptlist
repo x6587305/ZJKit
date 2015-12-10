@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZJKitDemo/ViewController.m"
-            timestampString = "471342503.077042"
+            timestampString = "471423793.9658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "587"
-            endingLineNumber = "587"
+            startingLineNumber = "794"
+            endingLineNumber = "794"
             landmarkName = "-touchesBegan:withEvent:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZJKitDemo/ViewController.m"
-            timestampString = "471342503.077042"
+            timestampString = "471423793.9658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "703"
-            endingLineNumber = "703"
+            startingLineNumber = "910"
+            endingLineNumber = "910"
             landmarkName = "-initWithFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZJKitDemo/ViewController.m"
-            timestampString = "471342503.077042"
+            timestampString = "471423793.9658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "704"
-            endingLineNumber = "704"
+            startingLineNumber = "911"
+            endingLineNumber = "911"
             landmarkName = "-initWithFrame:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZJKitDemo/ViewController.m"
-            timestampString = "471342503.077042"
+            timestampString = "471423793.9658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "693"
-            endingLineNumber = "693"
+            startingLineNumber = "900"
+            endingLineNumber = "900"
             landmarkName = "-setUp"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZJKitDemo/ViewController.m"
-            timestampString = "471342503.077042"
+            timestampString = "471423793.9658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "684"
-            endingLineNumber = "684"
+            startingLineNumber = "891"
+            endingLineNumber = "891"
             landmarkName = "-setBackgroundColor:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZJKitDemo/ViewController.m"
-            timestampString = "471342503.077042"
+            timestampString = "471423793.9658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "688"
-            endingLineNumber = "688"
+            startingLineNumber = "895"
+            endingLineNumber = "895"
             landmarkName = "-textLayer"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,13 +106,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ZJKitDemo/ViewController.m"
-            timestampString = "471342503.077042"
+            timestampString = "471423793.9658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "-changeColor:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

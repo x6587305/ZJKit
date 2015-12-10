@@ -17,6 +17,7 @@
 		8407F67F1C0D7744004BA213 /* ZJKitDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F67E1C0D7744004BA213 /* ZJKitDemoTests.m */; };
 		8407F68A1C0D7744004BA213 /* ZJKitDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F6891C0D7744004BA213 /* ZJKitDemoUITests.m */; };
 		8407F7A11C1038AA004BA213 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8407F7A01C1038AA004BA213 /* QuartzCore.framework */; };
+		843640541C195B09006A366C /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 843640531C195B09006A366C /* ViewController2.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		8407F6891C0D7744004BA213 /* ZJKitDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZJKitDemoUITests.m; sourceTree = "<group>"; };
 		8407F68B1C0D7744004BA213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8407F7A01C1038AA004BA213 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		843640521C195B09006A366C /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
+		843640531C195B09006A366C /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				8407F6751C0D7744004BA213 /* Info.plist */,
 				8407F66D1C0D7744004BA213 /* ZJKitDemo.xcdatamodeld */,
 				8407F6611C0D7744004BA213 /* Supporting Files */,
+				843640521C195B09006A366C /* ViewController2.h */,
+				843640531C195B09006A366C /* ViewController2.m */,
 			);
 			path = ZJKitDemo;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 			files = (
 				8407F6691C0D7744004BA213 /* ViewController.m in Sources */,
 				8407F6661C0D7744004BA213 /* AppDelegate.m in Sources */,
+				843640541C195B09006A366C /* ViewController2.m in Sources */,
 				8407F6631C0D7744004BA213 /* main.m in Sources */,
 				8407F66F1C0D7744004BA213 /* ZJKitDemo.xcdatamodeld in Sources */,
 			);
