@@ -146,7 +146,7 @@
 //    pathLayer.strokeColor = [UIColor redColor].CGColor;
 //    pathLayer.lineWidth = 3.0f;
 //    [self.view.layer addSublayer:pathLayer];
-//    //add the ship
+//    //add the shipfinish
 //    CALayer *shipLayer = [CALayer layer];
 //    shipLayer.frame = CGRectMake(0, 0, 64, 64);
 //    shipLayer.position = CGPointMake(0, 150); shipLayer.contents = (__bridge id)[UIImage imageNamed:@"3"].CGImage;
