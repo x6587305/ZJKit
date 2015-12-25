@@ -18,7 +18,27 @@
 		8407F68A1C0D7744004BA213 /* ZJKitDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8407F6891C0D7744004BA213 /* ZJKitDemoUITests.m */; };
 		8407F7A11C1038AA004BA213 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8407F7A01C1038AA004BA213 /* QuartzCore.framework */; };
 		843640541C195B09006A366C /* ViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 843640531C195B09006A366C /* ViewController2.m */; };
+		845AB3341C23AE7F00197598 /* DrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845AB3331C23AE7F00197598 /* DrawViewController.m */; };
+		845AB3371C23AF1A00197598 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 845AB3361C23AF1A00197598 /* DrawView.m */; };
+		845AB3411C28D83400197598 /* MainTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845AB3401C28D83400197598 /* MainTableController.m */; };
+		845AB3441C28DEEE00197598 /* ImageContenstVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845AB3431C28DEEE00197598 /* ImageContenstVC.m */; };
+		845AB3471C29014300197598 /* DrawLayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 845AB3461C29014300197598 /* DrawLayerVC.m */; };
+		846716C81C291DA60002D331 /* LayoutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 846716C71C291DA60002D331 /* LayoutVC.m */; };
+		846716CB1C2935A00002D331 /* EffectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 846716CA1C2935A00002D331 /* EffectVC.m */; };
+		846716CE1C294F110002D331 /* TransformsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 846716CD1C294F110002D331 /* TransformsVC.m */; };
 		84C208241C1EB92C008A8285 /* ViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C208231C1EB92C008A8285 /* ViewController3.m */; };
+		84EBB3BD1C2A2C7B00376A1B /* SpecializedLayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB3BC1C2A2C7B00376A1B /* SpecializedLayerVC.m */; };
+		84EBB3C01C2A2CBB00376A1B /* CAShapeLayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB3BF1C2A2CBB00376A1B /* CAShapeLayerVC.m */; };
+		84EBB3C31C2A3E3C00376A1B /* CATextLayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB3C21C2A3E3C00376A1B /* CATextLayerVC.m */; };
+		84EBB3C61C2B7EFD00376A1B /* CATransformLayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB3C51C2B7EFD00376A1B /* CATransformLayerVC.m */; };
+		84EBB3CB1C2B9F2B00376A1B /* CAGradientLayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB3CA1C2B9F2B00376A1B /* CAGradientLayerVC.m */; };
+		84EBB3CE1C2BBEB800376A1B /* CAReplicatorLayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB3CD1C2BBEB800376A1B /* CAReplicatorLayerVC.m */; };
+		84EBB3D11C2BC4E000376A1B /* CATiledLayerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB3D01C2BC4E000376A1B /* CATiledLayerVC.m */; };
+		84EBB3D51C2BD5FE00376A1B /* AnimationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB3D41C2BD5FE00376A1B /* AnimationVC.m */; };
+		84EBB3D81C2BD9D800376A1B /* ImplicitAnimationsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB3D71C2BD9D800376A1B /* ImplicitAnimationsVC.m */; };
+		84EBB3DB1C2D1D1000376A1B /* ExplicitAnimationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EBB3DA1C2D1D1000376A1B /* ExplicitAnimationVC.m */; };
+		84F0B73A1C1FFFB100AEABC1 /* ViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F0B7391C1FFFB100AEABC1 /* ViewController4.m */; };
+		84F0B73F1C2138D000AEABC1 /* CADisplayLinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F0B73E1C2138D000AEABC1 /* CADisplayLinkViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +79,48 @@
 		8407F7A01C1038AA004BA213 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		843640521C195B09006A366C /* ViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController2.h; sourceTree = "<group>"; };
 		843640531C195B09006A366C /* ViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController2.m; sourceTree = "<group>"; };
+		845AB3321C23AE7F00197598 /* DrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawViewController.h; sourceTree = "<group>"; };
+		845AB3331C23AE7F00197598 /* DrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawViewController.m; sourceTree = "<group>"; };
+		845AB3351C23AF1A00197598 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
+		845AB3361C23AF1A00197598 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
+		845AB33F1C28D83400197598 /* MainTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableController.h; sourceTree = "<group>"; };
+		845AB3401C28D83400197598 /* MainTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableController.m; sourceTree = "<group>"; };
+		845AB3421C28DEEE00197598 /* ImageContenstVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageContenstVC.h; sourceTree = "<group>"; };
+		845AB3431C28DEEE00197598 /* ImageContenstVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageContenstVC.m; sourceTree = "<group>"; };
+		845AB3451C29014300197598 /* DrawLayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawLayerVC.h; sourceTree = "<group>"; };
+		845AB3461C29014300197598 /* DrawLayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawLayerVC.m; sourceTree = "<group>"; };
+		846716C61C291DA60002D331 /* LayoutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutVC.h; sourceTree = "<group>"; };
+		846716C71C291DA60002D331 /* LayoutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutVC.m; sourceTree = "<group>"; };
+		846716C91C2935A00002D331 /* EffectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EffectVC.h; sourceTree = "<group>"; };
+		846716CA1C2935A00002D331 /* EffectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EffectVC.m; sourceTree = "<group>"; };
+		846716CC1C294F110002D331 /* TransformsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformsVC.h; sourceTree = "<group>"; };
+		846716CD1C294F110002D331 /* TransformsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransformsVC.m; sourceTree = "<group>"; };
 		84C208221C1EB92C008A8285 /* ViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController3.h; sourceTree = "<group>"; };
 		84C208231C1EB92C008A8285 /* ViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController3.m; sourceTree = "<group>"; };
+		84EBB3BB1C2A2C7B00376A1B /* SpecializedLayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecializedLayerVC.h; sourceTree = "<group>"; };
+		84EBB3BC1C2A2C7B00376A1B /* SpecializedLayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecializedLayerVC.m; sourceTree = "<group>"; };
+		84EBB3BE1C2A2CBB00376A1B /* CAShapeLayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAShapeLayerVC.h; sourceTree = "<group>"; };
+		84EBB3BF1C2A2CBB00376A1B /* CAShapeLayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAShapeLayerVC.m; sourceTree = "<group>"; };
+		84EBB3C11C2A3E3C00376A1B /* CATextLayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATextLayerVC.h; sourceTree = "<group>"; };
+		84EBB3C21C2A3E3C00376A1B /* CATextLayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATextLayerVC.m; sourceTree = "<group>"; };
+		84EBB3C41C2B7EFD00376A1B /* CATransformLayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATransformLayerVC.h; sourceTree = "<group>"; };
+		84EBB3C51C2B7EFD00376A1B /* CATransformLayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATransformLayerVC.m; sourceTree = "<group>"; };
+		84EBB3C91C2B9F2B00376A1B /* CAGradientLayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAGradientLayerVC.h; sourceTree = "<group>"; };
+		84EBB3CA1C2B9F2B00376A1B /* CAGradientLayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAGradientLayerVC.m; sourceTree = "<group>"; };
+		84EBB3CC1C2BBEB800376A1B /* CAReplicatorLayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAReplicatorLayerVC.h; sourceTree = "<group>"; };
+		84EBB3CD1C2BBEB800376A1B /* CAReplicatorLayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CAReplicatorLayerVC.m; sourceTree = "<group>"; };
+		84EBB3CF1C2BC4E000376A1B /* CATiledLayerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CATiledLayerVC.h; sourceTree = "<group>"; };
+		84EBB3D01C2BC4E000376A1B /* CATiledLayerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CATiledLayerVC.m; sourceTree = "<group>"; };
+		84EBB3D31C2BD5FE00376A1B /* AnimationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationVC.h; sourceTree = "<group>"; };
+		84EBB3D41C2BD5FE00376A1B /* AnimationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationVC.m; sourceTree = "<group>"; };
+		84EBB3D61C2BD9D800376A1B /* ImplicitAnimationsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImplicitAnimationsVC.h; sourceTree = "<group>"; };
+		84EBB3D71C2BD9D800376A1B /* ImplicitAnimationsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImplicitAnimationsVC.m; sourceTree = "<group>"; };
+		84EBB3D91C2D1D1000376A1B /* ExplicitAnimationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplicitAnimationVC.h; sourceTree = "<group>"; };
+		84EBB3DA1C2D1D1000376A1B /* ExplicitAnimationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplicitAnimationVC.m; sourceTree = "<group>"; };
+		84F0B7381C1FFFB100AEABC1 /* ViewController4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController4.h; sourceTree = "<group>"; };
+		84F0B7391C1FFFB100AEABC1 /* ViewController4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController4.m; sourceTree = "<group>"; };
+		84F0B73D1C2138D000AEABC1 /* CADisplayLinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADisplayLinkViewController.h; sourceTree = "<group>"; };
+		84F0B73E1C2138D000AEABC1 /* CADisplayLinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CADisplayLinkViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +173,7 @@
 		8407F6601C0D7744004BA213 /* ZJKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				845AB33E1C28D83400197598 /* ViewController */,
 				8407F6641C0D7744004BA213 /* AppDelegate.h */,
 				8407F6651C0D7744004BA213 /* AppDelegate.m */,
 				8407F6671C0D7744004BA213 /* ViewController.h */,
@@ -127,6 +188,14 @@
 				843640531C195B09006A366C /* ViewController2.m */,
 				84C208221C1EB92C008A8285 /* ViewController3.h */,
 				84C208231C1EB92C008A8285 /* ViewController3.m */,
+				84F0B7381C1FFFB100AEABC1 /* ViewController4.h */,
+				84F0B7391C1FFFB100AEABC1 /* ViewController4.m */,
+				84F0B73D1C2138D000AEABC1 /* CADisplayLinkViewController.h */,
+				84F0B73E1C2138D000AEABC1 /* CADisplayLinkViewController.m */,
+				845AB3321C23AE7F00197598 /* DrawViewController.h */,
+				845AB3331C23AE7F00197598 /* DrawViewController.m */,
+				845AB3351C23AF1A00197598 /* DrawView.h */,
+				845AB3361C23AF1A00197598 /* DrawView.m */,
 			);
 			path = ZJKitDemo;
 			sourceTree = "<group>";
@@ -155,6 +224,61 @@
 				8407F68B1C0D7744004BA213 /* Info.plist */,
 			);
 			path = ZJKitDemoUITests;
+			sourceTree = "<group>";
+		};
+		845AB33E1C28D83400197598 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84EBB3D21C2BD5D900376A1B /* animation */,
+				84EBB3BA1C2A2C4E00376A1B /* SpecializedLayer */,
+				845AB33F1C28D83400197598 /* MainTableController.h */,
+				845AB3401C28D83400197598 /* MainTableController.m */,
+				845AB3421C28DEEE00197598 /* ImageContenstVC.h */,
+				845AB3431C28DEEE00197598 /* ImageContenstVC.m */,
+				845AB3451C29014300197598 /* DrawLayerVC.h */,
+				845AB3461C29014300197598 /* DrawLayerVC.m */,
+				846716C61C291DA60002D331 /* LayoutVC.h */,
+				846716C71C291DA60002D331 /* LayoutVC.m */,
+				846716C91C2935A00002D331 /* EffectVC.h */,
+				846716CA1C2935A00002D331 /* EffectVC.m */,
+				846716CC1C294F110002D331 /* TransformsVC.h */,
+				846716CD1C294F110002D331 /* TransformsVC.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		84EBB3BA1C2A2C4E00376A1B /* SpecializedLayer */ = {
+			isa = PBXGroup;
+			children = (
+				84EBB3BB1C2A2C7B00376A1B /* SpecializedLayerVC.h */,
+				84EBB3BC1C2A2C7B00376A1B /* SpecializedLayerVC.m */,
+				84EBB3BE1C2A2CBB00376A1B /* CAShapeLayerVC.h */,
+				84EBB3BF1C2A2CBB00376A1B /* CAShapeLayerVC.m */,
+				84EBB3C11C2A3E3C00376A1B /* CATextLayerVC.h */,
+				84EBB3C21C2A3E3C00376A1B /* CATextLayerVC.m */,
+				84EBB3C41C2B7EFD00376A1B /* CATransformLayerVC.h */,
+				84EBB3C51C2B7EFD00376A1B /* CATransformLayerVC.m */,
+				84EBB3C91C2B9F2B00376A1B /* CAGradientLayerVC.h */,
+				84EBB3CA1C2B9F2B00376A1B /* CAGradientLayerVC.m */,
+				84EBB3CC1C2BBEB800376A1B /* CAReplicatorLayerVC.h */,
+				84EBB3CD1C2BBEB800376A1B /* CAReplicatorLayerVC.m */,
+				84EBB3CF1C2BC4E000376A1B /* CATiledLayerVC.h */,
+				84EBB3D01C2BC4E000376A1B /* CATiledLayerVC.m */,
+			);
+			path = SpecializedLayer;
+			sourceTree = "<group>";
+		};
+		84EBB3D21C2BD5D900376A1B /* animation */ = {
+			isa = PBXGroup;
+			children = (
+				84EBB3D31C2BD5FE00376A1B /* AnimationVC.h */,
+				84EBB3D41C2BD5FE00376A1B /* AnimationVC.m */,
+				84EBB3D61C2BD9D800376A1B /* ImplicitAnimationsVC.h */,
+				84EBB3D71C2BD9D800376A1B /* ImplicitAnimationsVC.m */,
+				84EBB3D91C2D1D1000376A1B /* ExplicitAnimationVC.h */,
+				84EBB3DA1C2D1D1000376A1B /* ExplicitAnimationVC.m */,
+			);
+			path = animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,12 +411,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845AB3411C28D83400197598 /* MainTableController.m in Sources */,
+				846716CE1C294F110002D331 /* TransformsVC.m in Sources */,
+				845AB3341C23AE7F00197598 /* DrawViewController.m in Sources */,
+				845AB3471C29014300197598 /* DrawLayerVC.m in Sources */,
 				8407F6691C0D7744004BA213 /* ViewController.m in Sources */,
 				8407F6661C0D7744004BA213 /* AppDelegate.m in Sources */,
 				84C208241C1EB92C008A8285 /* ViewController3.m in Sources */,
+				84EBB3DB1C2D1D1000376A1B /* ExplicitAnimationVC.m in Sources */,
+				84EBB3CB1C2B9F2B00376A1B /* CAGradientLayerVC.m in Sources */,
+				846716C81C291DA60002D331 /* LayoutVC.m in Sources */,
+				845AB3371C23AF1A00197598 /* DrawView.m in Sources */,
+				845AB3441C28DEEE00197598 /* ImageContenstVC.m in Sources */,
 				843640541C195B09006A366C /* ViewController2.m in Sources */,
+				846716CB1C2935A00002D331 /* EffectVC.m in Sources */,
+				84EBB3BD1C2A2C7B00376A1B /* SpecializedLayerVC.m in Sources */,
+				84EBB3C61C2B7EFD00376A1B /* CATransformLayerVC.m in Sources */,
 				8407F6631C0D7744004BA213 /* main.m in Sources */,
+				84EBB3C31C2A3E3C00376A1B /* CATextLayerVC.m in Sources */,
+				84EBB3D51C2BD5FE00376A1B /* AnimationVC.m in Sources */,
+				84F0B73A1C1FFFB100AEABC1 /* ViewController4.m in Sources */,
 				8407F66F1C0D7744004BA213 /* ZJKitDemo.xcdatamodeld in Sources */,
+				84F0B73F1C2138D000AEABC1 /* CADisplayLinkViewController.m in Sources */,
+				84EBB3D81C2BD9D800376A1B /* ImplicitAnimationsVC.m in Sources */,
+				84EBB3C01C2A2CBB00376A1B /* CAShapeLayerVC.m in Sources */,
+				84EBB3D11C2BC4E000376A1B /* CATiledLayerVC.m in Sources */,
+				84EBB3CE1C2BBEB800376A1B /* CAReplicatorLayerVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +578,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZJKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiezhaojun.ZJKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,6 +590,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ZJKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiezhaojun.ZJKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

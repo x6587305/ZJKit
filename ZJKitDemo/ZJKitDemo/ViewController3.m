@@ -33,14 +33,11 @@
     [super viewDidLoad];
 //    [self timeingFuncionStudy];
 //    [self timeingFuncionStudy2];
-//    [self timeingFuncionStudy3];
-    [self timeBaseAnimation];
+    [self timeingFuncionStudy3];
+//    [self timeBaseAnimation];
 }
 
-/**
- *  iOS的屏幕是一秒钟刷新60次。实际上我们之前的动画 也是60个frame 队列然后轮流展示而已。
- 所以实际上我们可以自己使用 nstime 每秒执行60次来实现动画
- */
+
 -(void)timeBaseAnimation{
     
 }
